@@ -1,0 +1,22 @@
+.main-home-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+.home-image-div {
+  /* border: 1px solid blue; */
+  width: 50%;
+}
+.home-image-div img {
+  /* border: 1px solid blue; */
+  width: 100%;
+}
+
+.home-info-div {
+  width: 50%;
+  /* border: 1px solid red; */
+  text-align: center;
+  padding: 4rem;
+}
