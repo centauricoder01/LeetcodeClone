@@ -3,13 +3,33 @@ import "./Navbar.css"
 import image from "../../Assets/leetcode.png"
 import { Button } from '@mui/material'
 import { Link } from "react-router-dom"
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
 
 
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "1rem"
+};
 
 const Navbar = () => {
 
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [value, setValue] = useState('Light Mode')
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  
+
 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -37,17 +57,39 @@ const Navbar = () => {
   };
 
   return (
-    <div className='navbar-main-div'>
-      <Link to={"/"}>
-        <img src={image} alt="image" width={100} />
-      </Link>
-      <div className='navbar-button-div'>
-        <Button variant="contained" onClick={handleToggle}>{value}</Button>
-        <Button variant="contained" color="success">
-          Signup
-        </Button>
+    <>
+      <div className='navbar-main-div'>
+        <Link to={"/"}>
+          <img src={image} alt="image" width={100} />
+        </Link>
+        <div className='navbar-button-div'>
+          <Button variant="contained" onClick={handleToggle}>{value}</Button>
+          <Button variant="contained" color="success" onClick={handleOpen}>
+            Signup
+          </Button>
+        </div>
       </div>
-    </div>
+
+      {/* Modal Code start from here For SignUP  */}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style} className='navbar-modal-div' >
+          <h1>Leetcode Signup</h1>
+          <TextField id="outlined-basic" label="Name" variant="outlined" className='navbar-inputbox' />
+          <TextField id="outlined-basic" label="Email" variant="outlined" className='navbar-inputbox' />
+          <TextField id="outlined-basic" label="Password" variant="outlined" className='navbar-inputbox' />
+          <Button variant="contained" color="success" onClick={handleOpen}>
+            Signup
+          </Button>
+          <p>Already have a <strong>Account</strong></p>
+        </Box>
+      </Modal>
+
+    </>
   )
 }
 

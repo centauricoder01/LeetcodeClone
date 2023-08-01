@@ -11,3 +11,15 @@
   align-items: center;
   gap: 2rem;
 }
+
+.navbar-modal-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  gap: 1rem;
+}
+.navbar-inputbox {
+  width: 100%;
+}
