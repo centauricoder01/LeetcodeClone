@@ -7,6 +7,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import { auth } from "../../Firebase"
+// import { signInWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -52,7 +54,11 @@ const Navbar = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(inputdetails);
+    createUserWithEmailAndPassword(auth, inputdetails.email, inputdetails.password).then((usercredential) => {
+      console.log(usercredential)
+    }).catch((err) => {
+      console.log(err)
+    })
   };
 
 
