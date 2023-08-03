@@ -11,8 +11,8 @@ const Home = () => {
         <img src={home} alt="home" />
       </div>
       <div className='home-info-div'>
-        <h2>A New Way to Learn
-        </h2>
+        <h1>A New Way to Learn
+        </h1>
         <p>LeetCode is the best platform to help you enhance your skills, expand your knowledge and prepare for technical interviews.</p>
         <Button variant="contained" color="success">
           Create Account

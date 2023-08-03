@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
-
+import { auth } from "../../Firebase"
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -28,7 +28,33 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
+
+  interface inputValueType {
+    name: string,
+    email: string,
+    password: string
+  }
+
+  const [inputdetails, setInputdetail] = useState<inputValueType>({
+    name: "",
+    email: "",
+    password: ""
+  })
+
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setInputdetail((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log(inputdetails);
+  };
+
 
 
   useEffect(() => {
@@ -78,11 +104,11 @@ const Navbar = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className='navbar-modal-div' >
-          <h1>Leetcode Signup</h1>
-          <TextField id="outlined-basic" label="Name" variant="outlined" className='navbar-inputbox' />
-          <TextField id="outlined-basic" label="Email" variant="outlined" className='navbar-inputbox' />
-          <TextField id="outlined-basic" label="Password" variant="outlined" className='navbar-inputbox' />
-          <Button variant="contained" color="success" onClick={handleOpen}>
+          <h1 style={{ color: 'black' }}>Leetcode Signup</h1>
+          <TextField label="Name" variant="outlined" className='navbar-inputbox' name='name' value={inputdetails.name} onChange={handleChange} />
+          <TextField label="Email" variant="outlined" className='navbar-inputbox' name='email' value={inputdetails.email} onChange={handleChange} />
+          <TextField label="Password" variant="outlined" className='navbar-inputbox' type='password' name='password' value={inputdetails.password} onChange={handleChange} />
+          <Button variant="contained" color="success" onClick={handleSubmit} >
             Signup
           </Button>
           <p>Already have a <strong>Account</strong></p>

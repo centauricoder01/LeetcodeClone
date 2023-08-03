@@ -3,11 +3,13 @@
   justify-content: center;
   align-items: center;
   /* border: 1px solid black; */
+  width: 80%;
+  margin: auto;
 }
 
 .home-image-div {
   /* border: 1px solid blue; */
-  width: 50%;
+  width: 100%;
 }
 .home-image-div img {
   /* border: 1px solid blue; */
@@ -15,7 +17,6 @@
 }
 
 .home-info-div {
-  width: 50%;
   /* border: 1px solid red; */
   text-align: center;
   padding: 4rem;
